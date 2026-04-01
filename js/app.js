@@ -3,13 +3,20 @@ const botonNo = document.getElementById("btnNo");
 const mensaje = document.getElementById("mensajeInicio");
 
 const partidaGuardada = localStorage.getItem("jugadores");
+const partidaActiva = localStorage.getItem("juegoActivo");
 
-if(partidaGuardada){
+// Mostrar mensaje correcto
+if(partidaGuardada && partidaActiva === "true"){
 
     mensaje.innerHTML = "Hay una partida en curso<br>¿Deseas continuar el juego?";
 
+}else{
+
+    mensaje.innerHTML = "¿Deseas iniciar una nueva partida?";
+
 }
 
+// BOTÓN SI
 botonSi.addEventListener("click", function(){
 
     const partidaActiva = localStorage.getItem("juegoActivo");
@@ -26,9 +33,10 @@ botonSi.addEventListener("click", function(){
 
 });
 
+// BOTÓN NO
 botonNo.addEventListener("click", function(){
 
-    localStorage.removeItem("jugadores");
+    localStorage.clear();
 
     mensaje.innerHTML = "¿Deseas iniciar una nueva partida?";
 

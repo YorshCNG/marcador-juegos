@@ -248,165 +248,169 @@ function cargarPartida(){
 }
 
 // ============================
-// ➕ AGREGAR JUGADOR
+// 🏆 VERIFICAR GANADOR (ESPAÑOLAS)
 // ============================
 
-botonAgregar.addEventListener("click", function(){
+function verificarGanador(){
 
-    const nombre = inputJugador.value;
+    const objetivo = parseInt(localStorage.getItem("puntosObjetivo"));
 
-    if(nombre === ""){
-        mostrarMensaje("⚠️ Error", "Escribe un nombre");
-        return;
-    }
+    if(!objetivo) return;
 
-    const jugador = {
-        nombre: nombre,
-        puntos: 0
-    };
+    let mayor = -Infinity;
 
-    jugadores.push(jugador);
-
-    mostrarJugadores();
-
-    inputJugador.value = "";
-});
-
-// ============================
-// 📋 MOSTRAR JUGADORES
-// ============================
-
-function mostrarJugadores(){
-
-    lista.innerHTML = "";
-
-    jugadores.forEach(function(jugador, index){
-
-        const elemento = document.createElement("li");
-
-        elemento.innerHTML = `
-        
-        <div class="jugadorHeader">
-
-            <div class="infoJugador">
-                <span class="nombre">${jugador.nombre}</span>
-                <span class="puntos">| Total: ${jugador.puntos}</span>
-            </div>
-
-            <button class="btnEliminar" onclick="eliminarJugador(${index})">🗑️</button>
-
-        </div>
-
-        <div class="controles">
-
-            <input type="number" id="puntos-${index}" placeholder="0">
-
-            <button onclick="sumarPuntos(${index})">+</button>
-
-            <button onclick="restarPuntos(${index})">-</button>
-
-        </div>
-        `;
-
-        lista.appendChild(elemento);
+    jugadores.forEach(function(jugador){
+        if(jugador.puntos > mayor){
+            mayor = jugador.puntos;
+        }
     });
 
-    localStorage.setItem("juegoActivo", "true");
-
-    actualizarBotonesJuego();
-    guardarPartida();
+    if(mayor >= objetivo){
+        finalizarJuego();
+    }
 }
 
 // ============================
-// ➕ SUMAR PUNTOS
+// 🏁 FINALIZAR JUEGO (FIX TOTAL)
 // ============================
 
-function sumarPuntos(index){
+function finalizarJuego(){
 
-    const input = document.getElementById(`puntos-${index}`);
-    const valor = parseInt(input.value);
+    const juego = localStorage.getItem("juegoSeleccionado");
 
-    if(isNaN(valor)){
-        mostrarMensaje("⚠️ Error", "Ingresa un número válido");
+    if(jugadores.length === 0){
+        mostrarMensaje("⚠ Error", "No hay jugadores.");
         return;
     }
 
-    jugadores[index].puntos += valor;
+    let resultado = [];
 
-    mostrarJugadores();
+    if(juego === "careocas"){
 
-    // 🔥 pequeña pausa para evitar errores de render
-    setTimeout(() => {
-        verificarGanador();
-    }, 100);
-}
+        let menor = Math.min(...jugadores.map(j => j.puntos));
 
-// ============================
-// ➖ RESTAR PUNTOS
-// ============================
+        resultado = jugadores.filter(j => j.puntos === menor);
+    }
 
-function restarPuntos(index){
+    if(juego === "espanolas"){
 
-    const input = document.getElementById(`puntos-${index}`);
-    const valor = parseInt(input.value);
+        let mayor = Math.max(...jugadores.map(j => j.puntos));
 
-    if(isNaN(valor)){
-        mostrarMensaje("⚠️ Error", "Ingresa un número válido");
+        resultado = jugadores.filter(j => j.puntos === mayor);
+    }
+
+    // 🔴 PROTECCIÓN CRÍTICA
+    if(resultado.length === 0){
+        mostrarMensaje("⚠ Error", "No se pudo determinar ganador.");
         return;
     }
 
-    jugadores[index].puntos -= valor;
+    if(resultado.length > 1){
 
-    mostrarJugadores();
-}
+        let nombres = resultado.map(j => j.nombre).join(", ");
 
-// ============================
-// 🗑️ ELIMINAR JUGADOR (FIX TOTAL)
-// ============================
+        mostrarResultado("🤝 Empate", nombres);
 
-let jugadorAEliminar = null;
+    }else{
 
-function eliminarJugador(index){
-
-    jugadorAEliminar = index;
-
-    document.getElementById("modalConfirmacion").style.display = "flex";
-}
-
-// 🔴 EVENTOS SOLO UNA VEZ (IMPORTANTE)
-
-document.getElementById("cancelarEliminar").addEventListener("click", function(){
-    document.getElementById("modalConfirmacion").style.display = "none";
-});
-
-document.getElementById("confirmarEliminar").addEventListener("click", function(){
-
-    if(jugadorAEliminar !== null){
-
-        jugadores.splice(jugadorAEliminar, 1);
-
-        mostrarJugadores();
-
-        jugadorAEliminar = null;
-    }
-
-    document.getElementById("modalConfirmacion").style.display = "none";
-});
-
-// ============================
-// 💾 GUARDAR / CARGAR PARTIDA
-// ============================
-
-function guardarPartida(){
-    localStorage.setItem("jugadores", JSON.stringify(jugadores));
-}
-
-function cargarPartida(){
-
-    const datos = localStorage.getItem("jugadores");
-
-    if(datos){
-        jugadores = JSON.parse(datos);
-        mostrarJugadores();
+        mostrarResultado("🏆 Ganador", resultado[0].nombre);
     }
 }
+
+// ============================
+// 📊 MODAL RESULTADO
+// ============================
+
+function mostrarResultado(titulo, texto){
+
+    const modal = document.getElementById("modalResultado");
+
+    document.getElementById("tituloResultado").innerText = titulo;
+    document.getElementById("textoResultado").innerText = texto;
+
+    modal.style.display = "flex";
+}
+
+// ============================
+// ⚠️ MODAL MENSAJES (FIX)
+// ============================
+
+function mostrarMensaje(titulo, texto){
+
+    const modal = document.getElementById("modalMensaje");
+
+    document.getElementById("tituloMensaje").innerText = titulo;
+    document.getElementById("textoMensaje").innerText = texto;
+
+    modal.style.display = "flex";
+}
+
+// 🔴 EVENTO GLOBAL (UNA SOLA VEZ)
+document.getElementById("cerrarModal").addEventListener("click", function(){
+    document.getElementById("modalMensaje").style.display = "none";
+});
+
+// ============================
+// 🔘 BOTONES FINALIZAR PARTIDA
+// ============================
+
+botonFinalizar.addEventListener("click", function(){
+    document.getElementById("modalFinalizar").style.display = "flex";
+});
+
+document.getElementById("cancelarFinalizar").addEventListener("click", function(){
+    document.getElementById("modalFinalizar").style.display = "none";
+});
+
+document.getElementById("confirmarFinalizar").addEventListener("click", function(){
+
+    document.getElementById("modalFinalizar").style.display = "none";
+
+    finalizarJuego();
+});
+
+// ============================
+// 🔄 BOTONES ACTIVOS / INACTIVOS
+// ============================
+
+function actualizarBotonesJuego(){
+
+    const botonSiguienteRonda = document.getElementById("siguienteRonda");
+
+    if(!botonFinalizar) return;
+
+    if(jugadores.length === 0){
+
+        if(botonSiguienteRonda){
+            botonSiguienteRonda.disabled = true;
+        }
+
+        botonFinalizar.disabled = true;
+
+    }else{
+
+        if(botonSiguienteRonda){
+            botonSiguienteRonda.disabled = false;
+        }
+
+        botonFinalizar.disabled = false;
+    }
+}
+
+// ============================
+// 🔄 CERRAR RESULTADO (VOLVER AL MENÚ)
+// ============================
+
+document.getElementById("btnCerrarModal").addEventListener("click", function(){
+
+    localStorage.clear();
+
+    window.location.href = "/marcador-juegos/index.html";
+});
+
+// ============================
+// 🚀 INICIALIZACIÓN
+// ============================
+
+actualizarBotonesJuego();
+cargarPartida();

@@ -382,13 +382,6 @@ function finalizarJuego(){
 
     }
 
-if(resultado.length === 0){
-
-    mostrarMensaje("⚠ Error", "No hay resultados válidos.");
-    return;
-
-}
-
 if(resultado.length > 1){
 
     let nombres = resultado.map(j => j.nombre).join(", ");
@@ -400,7 +393,14 @@ if(resultado.length > 1){
     mostrarResultado("🏆 Ganador", resultado[0].nombre);
 
 }
-}
+
+document.getElementById("btnCerrarModal").addEventListener("click", function(){
+
+    localStorage.clear();
+
+    window.location.href = "index.html";
+
+});}
 
 botonFinalizar.addEventListener("click", function(){
 
@@ -422,13 +422,6 @@ document.getElementById("confirmarFinalizar").addEventListener("click", function
 
 });
 
-document.getElementById("btnCerrarModal").addEventListener("click", function(){
-
-    localStorage.clear();
-
-    window.location.href = "index.html";
-
-});
 
 actualizarBotonesJuego();
 cargarPartida();

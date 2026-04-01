@@ -16,11 +16,11 @@ botonSi.addEventListener("click", function(){
 
     if(partidaActiva === "true"){
 
-        window.location.href = "partida.html";
+        window.location.href = "/marcador-juegos/html/partida.html";
 
     }else{
 
-        window.location.href = "seleccionarJuego.html";
+        window.location.href = "/marcador-juegos/html/seleccionarJuego.html";
 
     }
 

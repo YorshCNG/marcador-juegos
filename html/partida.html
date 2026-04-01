@@ -8,7 +8,7 @@
 
 <title>Nueva Partida</title>
 
-<link rel="stylesheet" href="../css/partida.css">
+<link rel="stylesheet" href="/marcador-juegos/css/partida.css">
 
 </head>
 
@@ -26,86 +26,56 @@
 
 <h2>Jugadores</h2>
 
-<ul id="listaJugadores">
-
-</ul>
+<ul id="listaJugadores"></ul>
 
 <button id="finalizarPartida">Finalizar partida</button>
 
 </div>
 
-<script src="../js/partida.js"></script>
+<!-- ================= MODALES ================= -->
 
 <div id="modalResultado" class="modal">
-
     <div class="modalContenido">
-
         <h2 id="tituloResultado"></h2>
-
         <p id="textoResultado"></p>
-
         <button id="btnCerrarModal">Nueva partida</button>
-
     </div>
-
 </div>
 
 <div id="modalMensaje" class="modal">
-
     <div class="modalContenido">
-
         <h2 id="tituloMensaje"></h2>
-
         <p id="textoMensaje"></p>
-
         <button id="cerrarModal">Cerrar</button>
-
     </div>
-
 </div>
 
 <div id="modalConfirmacion" class="modal">
-
     <div class="modalContenido">
-
         <h2>Eliminar jugador</h2>
-
         <p>¿Eliminar este jugador?</p>
-
         <div class="botonesModal">
-
             <button id="cancelarEliminar">Cancelar</button>
-
             <button id="confirmarEliminar" class="btnEliminarConfirmar">Eliminar</button>
-
         </div>
-
     </div>
-
 </div>
 
 <div id="modalFinalizar" class="modal">
-
     <div class="modalContenido">
-
         <h2>Finalizar partida</h2>
-
         <p>¿Seguro que deseas terminar la partida?</p>
-
         <div class="botonesModal">
-
             <button id="cancelarFinalizar">Cancelar</button>
-
             <button id="confirmarFinalizar" class="btnEliminarConfirmar">
                 Finalizar
             </button>
-
         </div>
-
     </div>
-
 </div>
 
-</body>
+<!-- 🔥 SCRIPT SIEMPRE AL FINAL -->
+<script src="/marcador-juegos/js/partida.js"></script>
 
+</body>
 </html>

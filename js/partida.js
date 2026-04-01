@@ -383,17 +383,24 @@ function finalizarJuego(){
 
     }
 
-    if(resultado.length > 1){
+if(resultado.length === 0){
 
-        let nombres = resultado.map(j => j.nombre).join(", ");
+    mostrarMensaje("⚠ Error", "No hay resultados válidos.");
+    return;
 
-        mostrarResultado("🤝 Empate", nombres);
+}
 
-    }else{
+if(resultado.length > 1){
 
-        mostrarResultado("🏆 Ganador", resultado[0].nombre);
+    let nombres = resultado.map(j => j.nombre).join(", ");
 
-    }
+    mostrarResultado("🤝 Empate", nombres);
+
+}else{
+
+    mostrarResultado("🏆 Ganador", resultado[0].nombre);
+
+}
 
     
 document.getElementById("btnCerrarModal").addEventListener("click", function(){

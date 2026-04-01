@@ -400,7 +400,7 @@ document.getElementById("btnCerrarModal").addEventListener("click", function(){
 
     localStorage.clear();
 
-    window.location.href = "indice.html";
+    window.location.href = "/marcador-juegos/index.html";
 
 });}
 

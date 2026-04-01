@@ -1,54 +1,50 @@
-const CACHE_NAME = "marcador-juegos-v2";
+const CACHE_NAME = "marcador-juegos-v3";
+
+// 🔥 BASE PATH (CLAVE)
+const BASE = "/marcador-juegos/";
 
 const urlsToCache = [
-    "/",
-    "/index.html",
+    BASE,
+    BASE + "index.html",
 
-    "/html/partida.html",
-    "/html/configurarPartida.html",
-    "/html/seleccionarJuego.html",
+    BASE + "html/partida.html",
+    BASE + "html/configurarPartida.html",
+    BASE + "html/seleccionarJuego.html",
 
-    "/css/indice.css",
-    "/css/partida.css",
-    "/css/configurarPartida.css",
-    "/css/seleccionarJuego.css",
+    BASE + "css/indice.css",
+    BASE + "css/partida.css",
+    BASE + "css/configurarPartida.css",
+    BASE + "css/seleccionarJuego.css",
 
-    "/js/app.js",
-    "/js/partida.js",
-    "/js/configurarPartida.js",
-    "/js/seleccionarJuego.js",
+    BASE + "js/app.js",
+    BASE + "js/partida.js",
+    BASE + "js/configurarPartida.js",
+    BASE + "js/seleccionarJuego.js",
 
-    "/icons/icon-192.png",
-    "/icons/icon-512.png"
-];;
+    BASE + "icons/icon-192.png",
+    BASE + "icons/icon-512.png"
+];
+
+// ============================
+// 📦 INSTALL
+// ============================
 
 self.addEventListener("install", event => {
 
-event.waitUntil(
+    self.skipWaiting(); // 🔥 fuerza instalación inmediata
 
-caches.open(CACHE_NAME)
-.then(cache => cache.addAll(urlsToCache))
-
-);
-
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+        .then(cache => cache.addAll(urlsToCache))
+    );
 });
 
-self.addEventListener("fetch", event => {
-
-event.respondWith(
-
-caches.match(event.request)
-.then(response => {
-
-return response || fetch(event.request);
-
-})
-
-);
-
-});
+// ============================
+// 🔄 ACTIVATE (limpia cache viejo)
+// ============================
 
 self.addEventListener("activate", event => {
+
     event.waitUntil(
         caches.keys().then(keys => {
             return Promise.all(
@@ -60,4 +56,31 @@ self.addEventListener("activate", event => {
             );
         })
     );
+
+    self.clients.claim(); // 🔥 toma control inmediato
+});
+
+// ============================
+// 🌐 FETCH (MEJORADO)
+// ============================
+
+self.addEventListener("fetch", event => {
+
+    event.respondWith(
+
+        fetch(event.request)
+        .then(response => {
+
+            return caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, response.clone());
+                return response;
+            });
+
+        })
+        .catch(() => {
+            return caches.match(event.request);
+        })
+
+    );
+
 });

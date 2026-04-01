@@ -1,0 +1,283 @@
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#1e1e1e;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#2c2c2c;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    width:350px;
+    box-shadow:0px 0px 15px rgba(0,0,0,0.5);
+}
+
+h1{
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-around;
+}
+
+button{
+    padding:12px 30px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.add{
+    background:#4362ec;
+    color:white;
+}
+
+.Volver{
+    background:#4362ec;
+    color:white;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    width: 140px;
+    margin-right:10px;
+}
+
+input::placeholder{
+    color:#888;
+}
+
+#listaJugadores{
+    list-style:none;
+    padding:0;
+    margin-top:10px;
+}
+
+#listaJugadores li{
+    background:#3a3a3a;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.nombre{
+    font-size:16px;
+    text-align:left;
+}
+
+.controles{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:2px;
+}
+
+.controles input{
+    width:flex;
+    font-size:flex;
+}
+
+.puntos{
+    font-weight:bold;
+}
+
+.jugadorHeader{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.infoJugador{
+
+    display:flex;
+    gap:6px;
+    align-items:center;
+
+}
+
+.btnEliminar{
+
+    width:36px;
+    height:36px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#sumar{
+   background:#2a2a2a;
+   color:white;
+   padding:6px 10px;
+   border-radius:6px 0px 0px 6px;
+   font-size:flex;
+   justify-content:center;
+}
+
+#restar{
+    background:#2a2a2a;
+    color:white;
+    padding:6px 12px;
+    border-radius:0px 6px 6px 0px;
+    font-size:flex;
+    font-weight:bold;
+    justify-content:center;
+}
+
+.btnEliminar{
+    background:#e74c3c;
+    color:white;
+}
+
+.infoJuego{
+
+background:#2b2b2b;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+text-align:center;
+
+}
+
+.infoJuego h3{
+
+margin-bottom:8px;
+font-size:16px;
+
+}
+
+.infoJuego p{
+
+margin:4px 0;
+font-size:14px;
+opacity:0.9;
+
+}
+
+#siguienteRonda{
+
+margin-top:10px;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+#finalizarPartida{
+
+margin-top:15px;
+padding:10px 16px;
+border-radius:10px;
+background:#e74c3c;
+color:white;
+border:none;
+cursor:pointer;
+
+}
+
+.modal{
+
+display:none;
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.6);
+
+justify-content:center;
+align-items:center;
+
+}
+
+.modalContenido{
+
+background:#2b2b2b;
+padding:25px;
+border-radius:12px;
+
+text-align:center;
+width:250px;
+
+}
+
+.modalContenido h2{
+
+margin-bottom:10px;
+
+}
+
+.modalContenido button{
+
+margin-top:15px;
+padding:8px 16px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+.botonesModal{
+
+display:flex;
+justify-content:space-between;
+margin-top:15px;
+
+}
+
+.botonesModal button{
+
+padding:8px 16px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+.btnEliminarConfirmar{
+
+background:#e74c3c;
+color:white;
+border:none;
+
+}
+
+#cerrarModal{
+    background:#4362ec;
+    color:white;
+}
+
+#tituloMensaje{
+        color:rgb(228, 193, 39);
+}
+
+button:disabled{
+
+opacity:0.5;
+cursor:not-allowed;
+
+}

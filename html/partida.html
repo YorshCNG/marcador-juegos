@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nueva Partida</title>
+
+<link rel="stylesheet" href="../css/partida.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Nueva Partida</h1>
+
+<div id="infoJuego"></div>
+
+<input type="text" id="nombreJugador" placeholder="Nombre del jugador">
+
+<button class="add" id="agregarJugador">Agregar jugador</button>
+
+<h2>Jugadores</h2>
+
+<ul id="listaJugadores">
+
+</ul>
+
+<button id="finalizarPartida">Finalizar partida</button>
+
+</div>
+
+<script src="../js/partida.js"></script>
+
+<div id="modalResultado" class="modal">
+
+    <div class="modalContenido">
+
+        <h2 id="tituloResultado"></h2>
+
+        <p id="textoResultado"></p>
+
+        <button id="btnCerrarModal">Nueva partida</button>
+
+    </div>
+
+</div>
+
+<div id="modalMensaje" class="modal">
+
+    <div class="modalContenido">
+
+        <h2 id="tituloMensaje"></h2>
+
+        <p id="textoMensaje"></p>
+
+        <button id="cerrarModal">Cerrar</button>
+
+    </div>
+
+</div>
+
+<div id="modalConfirmacion" class="modal">
+
+    <div class="modalContenido">
+
+        <h2>Eliminar jugador</h2>
+
+        <p>¿Eliminar este jugador?</p>
+
+        <div class="botonesModal">
+
+            <button id="cancelarEliminar">Cancelar</button>
+
+            <button id="confirmarEliminar" class="btnEliminarConfirmar">Eliminar</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modalFinalizar" class="modal">
+
+    <div class="modalContenido">
+
+        <h2>Finalizar partida</h2>
+
+        <p>¿Seguro que deseas terminar la partida?</p>
+
+        <div class="botonesModal">
+
+            <button id="cancelarFinalizar">Cancelar</button>
+
+            <button id="confirmarFinalizar" class="btnEliminarConfirmar">
+                Finalizar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

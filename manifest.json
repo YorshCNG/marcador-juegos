@@ -2,6 +2,7 @@
   "name": "Marcador de Juegos",
   "short_name": "Marcador",
   "start_url": "/marcador-juegos/index.html",
+  "scope": "/marcador-juegos/",
   "display": "standalone",
   "background_color": "#1e1e1e",
   "theme_color": "#1e1e1e",

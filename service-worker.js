@@ -3,7 +3,6 @@ const CACHE_NAME = "marcador-juegos-v1";
 const urlsToCache = [
 
 "/",
-"/html/indice.html",
 "/html/partida.html",
 "/html/configurarPartida.html",
 "/html/seleccionarJuego.html",

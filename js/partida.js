@@ -271,8 +271,7 @@ ganador = jugador.nombre;
 
 if(mayor >= objetivo){
 
-alert("🏆 Ganador: " + ganador);
-
+mostrarResultado("🏆 Ganador", ganador);
 }
 
 }
@@ -401,15 +400,7 @@ if(resultado.length > 1){
     mostrarResultado("🏆 Ganador", resultado[0].nombre);
 
 }
-
-    
-document.getElementById("btnCerrarModal").addEventListener("click", function(){
-
-    localStorage.clear();
-
-    window.location.href = "/marcador-juegos/index.html";
-
-});}
+}
 
 botonFinalizar.addEventListener("click", function(){
 
@@ -431,6 +422,13 @@ document.getElementById("confirmarFinalizar").addEventListener("click", function
 
 });
 
+document.getElementById("btnCerrarModal").addEventListener("click", function(){
+
+    localStorage.clear();
+
+    window.location.href = "index.html";
+
+});
 
 actualizarBotonesJuego();
 cargarPartida();

@@ -1,7 +1,7 @@
 {
   "name": "Marcador de Juegos",
   "short_name": "Marcador",
-  "start_url": "html/indice.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#1e1e1e",
   "theme_color": "#1e1e1e",

@@ -1,71 +1,73 @@
+/* BASE */
 body{
     margin:0;
     font-family: Arial, Helvetica, sans-serif;
-    background:#1e1e1e;
+
+    background: linear-gradient(180deg, #1e1e1e, #121212);
     color:white;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     height:100vh;
 }
 
+/* CONTENEDOR */
 .container{
-    background:#2c2c2c;
-    padding:40px;
-    border-radius:15px;
+    width:100%;
+    max-width:420px;
+    padding:20px;
     text-align:center;
-    width:350px;
-    box-shadow:0px 0px 15px rgba(0,0,0,0.5);
 }
 
+/* TITULO */
 h1{
     font-size:22px;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
-.buttons{
-    display:flex;
-    justify-content:space-around;
-}
-
-button{
-    padding:12px 30px;
-    font-size:16px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.yes{
-    background:#4CAF50;
-    color:white;
-}
-
-.no{
-    background:#f44336;
-    color:white;
-}
-
-button:hover{
-    opacity:0.8;
-}
-
+/* OPCIONES */
 .opcionesJuego{
-
-display:flex;
-flex-direction:column;
-gap:15px;
-
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
+/* BOTONES COMO CARDS */
 .btnJuego{
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
 
-padding:15px;
-font-size:16px;
-border-radius:10px;
-cursor:pointer;
-background:#4362ec;
-color:white;
+    font-size:16px;
+    font-weight:bold;
 
+    text-align:left;
+
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+    color:white;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+
+    transition: all 0.2s ease;
 }
 
+/* EFECTOS */
+.btnJuego:hover{
+    transform: translateY(-3px);
+}
+
+.btnJuego:active{
+    transform: scale(0.97);
+}
+
+/* VARIACIONES (opcional pero pro) */
+.btnJuego:nth-child(1){
+    border-left: 5px solid #4362ec;
+}
+
+.btnJuego:nth-child(2){
+    border-left: 5px solid #e74c3c;
+}

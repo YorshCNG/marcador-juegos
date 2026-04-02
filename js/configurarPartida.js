@@ -9,7 +9,6 @@ const paso3 = document.getElementById("paso3");
 
 // botones
 const btnPaso1 = document.getElementById("btnPaso1");
-const btnPaso2 = document.getElementById("btnPaso2");
 const btnIniciar = document.getElementById("btnIniciar");
 
 // jugadores
@@ -18,7 +17,9 @@ const lista = document.getElementById("listaJugadores");
 
 let jugadores = [];
 
+//////////////////////////////
 // CONFIGURAR JUEGO
+//////////////////////////////
 if(juego === "careocas"){
     titulo.innerText = "Careocas (Poker)";
     document.getElementById("configuracionJuego").innerHTML = `
@@ -84,14 +85,25 @@ document.getElementById("agregarJugador").addEventListener("click", () => {
     renderJugadores();
 });
 
+//////////////////////////////
+// RENDER JUGADORES
+//////////////////////////////
 function renderJugadores(){
     lista.innerHTML = "";
 
     jugadores.forEach((j, i) => {
-li.innerHTML = `
-    <span class="jugadorNombre">${nombre}</span>
-    <button class="btnEliminar">✕</button>
-`;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <span class="jugadorNombre">${j.nombre}</span>
+            <button class="btnEliminar">✕</button>
+        `;
+
+        li.querySelector("button").addEventListener("click", () => {
+            eliminarJugador(i);
+        });
+
         lista.appendChild(li);
     });
 }
@@ -102,9 +114,14 @@ function eliminarJugador(index){
 }
 
 //////////////////////////////
-// PASO 2 → PASO 3
+// BOTONES PASO 2
 //////////////////////////////
-btnPaso2.addEventListener("click", () => {
+function volverPaso1(){
+    paso2.style.display = "none";
+    paso1.style.display = "flex";
+}
+
+function irPaso3(){
 
     if(jugadores.length === 0){
         mostrarToast("Agrega al menos un jugador");
@@ -115,7 +132,7 @@ btnPaso2.addEventListener("click", () => {
     paso3.style.display = "flex";
 
     mostrarResumen();
-});
+}
 
 //////////////////////////////
 // RESUMEN
@@ -143,6 +160,9 @@ function mostrarResumen(){
     resumen.innerHTML = html;
 }
 
+//////////////////////////////
+// TOAST
+//////////////////////////////
 function mostrarToast(mensaje){
 
     const toast = document.getElementById("toast");

@@ -2,11 +2,10 @@ const botonSi = document.getElementById("btnSi");
 const botonNo = document.getElementById("btnNo");
 const mensaje = document.getElementById("mensajeInicio");
 
-const partidaGuardada = localStorage.getItem("jugadores");
+const jugadores = JSON.parse(localStorage.getItem("jugadores"));
 const partidaActiva = localStorage.getItem("juegoActivo");
 
-// Mostrar mensaje correcto
-if(partidaGuardada && partidaActiva === "true"){
+if(jugadores && jugadores.length > 0 && partidaActiva === "true"){
 
     mensaje.innerHTML = "Hay una partida en curso<br>¿Deseas continuar el juego?";
 

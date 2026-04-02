@@ -1,77 +1,156 @@
-const titulo = document.getElementById("tituloJuego");
-const configuracion = document.getElementById("configuracionJuego");
-const botonComenzar = document.getElementById("btnComenzar");
-
 const juego = localStorage.getItem("juegoSeleccionado");
 
-if(!juego){
-    window.location.href = "/marcador-juegos/index.html";
-}
+const titulo = document.getElementById("tituloJuego");
 
-function mostrarMensaje(tituloTexto, texto){
+// pasos
+const paso1 = document.getElementById("paso1");
+const paso2 = document.getElementById("paso2");
+const paso3 = document.getElementById("paso3");
 
-    const modal = document.getElementById("modalMensaje");
+// botones
+const btnPaso1 = document.getElementById("btnPaso1");
+const btnPaso2 = document.getElementById("btnPaso2");
+const btnIniciar = document.getElementById("btnIniciar");
 
-    document.getElementById("tituloMensaje").innerText = tituloTexto;
-    document.getElementById("textoMensaje").innerText = texto;
+// jugadores
+const inputJugador = document.getElementById("nombreJugador");
+const lista = document.getElementById("listaJugadores");
 
-    modal.style.display = "flex";
-}
+let jugadores = [];
 
-document.getElementById("cerrarModal").addEventListener("click", function(){
-    document.getElementById("modalMensaje").style.display = "none";
-});
-
+// CONFIGURAR JUEGO
 if(juego === "careocas"){
-    titulo.innerHTML = "Careocas (Poker)";
-    configuracion.innerHTML = `
+    titulo.innerText = "Careocas (Poker)";
+    document.getElementById("configuracionJuego").innerHTML = `
         <label>Cantidad de rondas</label>
-        <input type="number" id="cantidadRondas" placeholder="Ej: 10">
+        <input type="number" id="cantidadRondas">
     `;
 }
 
 if(juego === "espanolas"){
-    titulo.innerHTML = "Las Españolas (Las Quince)";
-    configuracion.innerHTML = `
+    titulo.innerText = "Las Españolas";
+    document.getElementById("configuracionJuego").innerHTML = `
         <label>Puntaje objetivo</label>
-        <input type="number" id="puntosObjetivo" placeholder="Ej: 50">
+        <input type="number" id="puntosObjetivo">
     `;
 }
 
-function iniciarPartida(){
+//////////////////////////////
+// PASO 1 → PASO 2
+//////////////////////////////
+btnPaso1.addEventListener("click", () => {
 
     if(juego === "careocas"){
-
         const rondas = document.getElementById("cantidadRondas").value;
-
         if(rondas === "" || rondas <= 0){
-            mostrarMensaje("⚠ Error", "Debes ingresar la cantidad de rondas.");
+            alert("Ingresa rondas válidas");
             return;
         }
-
         localStorage.setItem("cantidadRondas", rondas);
     }
 
     if(juego === "espanolas"){
-
-        const objetivo = document.getElementById("puntosObjetivo").value;
-
-        if(objetivo === "" || objetivo <= 0){
-            mostrarMensaje("⚠ Error", "Debes ingresar el puntaje objetivo.");
+        const puntos = document.getElementById("puntosObjetivo").value;
+        if(puntos === "" || puntos <= 0){
+            alert("Ingresa puntaje válido");
             return;
         }
-
-        localStorage.setItem("puntosObjetivo", objetivo);
+        localStorage.setItem("puntosObjetivo", puntos);
     }
 
-    window.location.href = "/marcador-juegos/html/partida.html";
+    paso1.style.display = "none";
+    paso2.style.display = "flex";
+});
+
+//////////////////////////////
+// AGREGAR JUGADOR
+//////////////////////////////
+document.getElementById("agregarJugador").addEventListener("click", () => {
+
+    const nombre = inputJugador.value.trim();
+
+    if(nombre === ""){
+        alert("Escribe un nombre");
+        return;
+    }
+
+    jugadores.push({
+        nombre,
+        puntos: 0
+    });
+
+    inputJugador.value = "";
+
+    renderJugadores();
+});
+
+function renderJugadores(){
+    lista.innerHTML = "";
+
+    jugadores.forEach((j, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${j.nombre}
+            <button onclick="eliminarJugador(${i})">❌</button>
+        `;
+        lista.appendChild(li);
+    });
 }
 
-botonComenzar.addEventListener("click", iniciarPartida);
+function eliminarJugador(index){
+    jugadores.splice(index, 1);
+    renderJugadores();
+}
 
-document.addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-        e.preventDefault();
-        iniciarPartida();
+//////////////////////////////
+// PASO 2 → PASO 3
+//////////////////////////////
+btnPaso2.addEventListener("click", () => {
+
+    if(jugadores.length === 0){
+        alert("Agrega al menos un jugador");
+        return;
     }
+
+    paso2.style.display = "none";
+    paso3.style.display = "flex";
+
+    mostrarResumen();
+});
+
+//////////////////////////////
+// RESUMEN
+//////////////////////////////
+function mostrarResumen(){
+
+    const resumen = document.getElementById("resumen");
+
+    let html = "<h3>Resumen</h3>";
+
+    if(juego === "careocas"){
+        html += `<p>Rondas: ${localStorage.getItem("cantidadRondas")}</p>`;
+    }
+
+    if(juego === "espanolas"){
+        html += `<p>Objetivo: ${localStorage.getItem("puntosObjetivo")}</p>`;
+    }
+
+    html += "<p>Jugadores:</p>";
+
+    jugadores.forEach(j => {
+        html += `<p>• ${j.nombre}</p>`;
+    });
+
+    resumen.innerHTML = html;
+}
+
+//////////////////////////////
+// INICIAR PARTIDA
+//////////////////////////////
+btnIniciar.addEventListener("click", () => {
+
+    localStorage.setItem("jugadores", JSON.stringify(jugadores));
+    localStorage.setItem("juegoActivo", "true");
+
+    window.location.href = "partida.html";
 });

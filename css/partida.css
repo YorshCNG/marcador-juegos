@@ -1,36 +1,37 @@
 /* BASE */
 body{
     margin:0;
-    font-family: system-ui, -apple-system, Arial;
-    background:#121212;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #1e1e1e, #121212);
     color:white;
+
+    display:flex;
+    justify-content:center;
 }
 
 /* CONTENEDOR */
 .container{
+    width:100%;
     max-width:420px;
-    margin:auto;
-    padding:16px;
-    padding-bottom:80px; /* espacio para botones */
+    padding:20px;
+    padding-bottom:80px;
 }
 
 /* TITULO */
 h1{
     text-align:center;
     font-size:22px;
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
-/* INFO JUEGO */
+/* INFO */
 .infoJuego{
-    background:#1a1a1a;
-    border-radius:12px;
-    padding:12px;
-    margin-bottom:14px;
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+    padding:14px;
+    border-radius:16px;
+    margin-bottom:12px;
 
-    text-align:center;
-    font-size:14px;
-    color:#ccc;
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);
 }
 
 /* LISTA */
@@ -39,29 +40,52 @@ h1{
     padding:0;
 }
 
-/* JUGADOR */
 #listaJugadores li{
     display:flex;
     justify-content:space-between;
     align-items:center;
 
     background:#1e1e1e;
-    border-radius:12px;
     padding:14px;
+    border-radius:12px;
     margin-bottom:10px;
 }
 
 /* NOMBRE */
 .nombre{
     font-weight:500;
-    font-size:15px;
 }
 
 /* PUNTOS */
 .puntos{
     font-weight:bold;
-    font-size:16px;
     color:#4ade80;
+}
+
+/* BOTONES INFERIORES */
+.acciones{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:420px;
+    display:flex;
+    gap:10px;
+}
+
+#btnRonda{
+    flex:1;
+    background:#4362ec;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+}
+
+#finalizarPartida{
+    flex:1;
+    background:#e74c3c;
+    color:white;
 }
 
 /* MODAL */
@@ -72,22 +96,20 @@ h1{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.7);
+    background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
 }
 
-/* CONTENIDO MODAL */
 .modalContenido{
-    background:#1e1e1e;
+    background:#2b2b2b;
     padding:20px;
-    border-radius:14px;
+    border-radius:16px;
     width:90%;
     max-width:320px;
-    text-align:center;
 }
 
-/* INPUTS MODAL */
+/* INPUTS */
 #inputsPuntajes{
     display:flex;
     flex-direction:column;
@@ -96,7 +118,6 @@ h1{
 }
 
 #inputsPuntajes input{
-    width:100%;
     padding:12px;
     border-radius:10px;
     border:1px solid #2a2a2a;
@@ -104,73 +125,20 @@ h1{
     color:white;
 }
 
-/* BOTONES GENERALES */
-button{
-    cursor:pointer;
-    border:none;
-    border-radius:12px;
-    transition:0.15s;
-}
-
-button:active{
-    transform:scale(0.96);
-}
-
-/* BOTONES INFERIORES */
-.acciones{
-    position:fixed;
-    bottom:10px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:90%;
-    max-width:420px;
-
-    display:flex;
-    gap:10px;
-}
-
-#btnRonda{
-    flex:1;
-    background:#3b82f6;
-    color:white;
-    padding:14px;
-}
-
-#finalizarPartida{
-    flex:1;
-    background:#ef4444;
-    color:white;
-    padding:14px;
-}
-
-/* ===================== */
-/* 🔥 TOAST (NOTIFICACIONES) */
-/* ===================== */
-
+/* TOAST */
 .toast{
     position:fixed;
     bottom:20px;
     left:50%;
     transform:translateX(-50%);
-
     background:#2a2a2a;
     color:white;
-
     padding:12px 16px;
     border-radius:10px;
-
-    font-size:14px;
-
     opacity:0;
-    pointer-events:none;
-
-    transition:all 0.3s ease;
-
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    transition:0.3s;
 }
 
 .toast.show{
     opacity:1;
-    transform:translateX(-50%) translateY(-10px);
 }

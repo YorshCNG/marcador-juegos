@@ -88,11 +88,10 @@ function renderJugadores(){
     lista.innerHTML = "";
 
     jugadores.forEach((j, i) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            ${j.nombre}
-            <button onclick="eliminarJugador(${i})">❌</button>
-        `;
+li.innerHTML = `
+    <span class="jugadorNombre">${nombre}</span>
+    <button class="btnEliminar">✕</button>
+`;
         lista.appendChild(li);
     });
 }

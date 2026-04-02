@@ -1,20 +1,9 @@
-/* BASE */
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, #1e1e1e, #121212);
-    color:white;
-
-    display:flex;
-    justify-content:center;
-}
-
 /* CONTENEDOR */
 .container{
     width:100%;
     max-width:420px;
     padding:20px;
-    padding-bottom:80px;
+    padding-bottom:90px;
 }
 
 /* TITULO */
@@ -24,105 +13,94 @@ h1{
     margin-bottom:15px;
 }
 
-/* INFO */
+/* INFO (CARD PRO) */
 .infoJuego{
     background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-    padding:14px;
+    padding:16px;
     border-radius:16px;
-    margin-bottom:12px;
+    margin-bottom:15px;
 
-    box-shadow:0 6px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* LISTA */
-#listaJugadores{
-    list-style:none;
-    padding:0;
-}
-
+/* JUGADORES */
 #listaJugadores li{
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:#1e1e1e;
-    padding:14px;
-    border-radius:12px;
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+
+    padding:16px;
+    border-radius:16px;
+
     margin-bottom:10px;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* NOMBRE */
 .nombre{
-    font-weight:500;
+    font-size:16px;
 }
 
 /* PUNTOS */
 .puntos{
     font-weight:bold;
-    color:#4ade80;
+    color:#22c55e;
 }
 
-/* BOTONES INFERIORES */
+/* BOTONES ABAJO */
 .acciones{
     position:fixed;
     bottom:10px;
     left:50%;
     transform:translateX(-50%);
+
     width:90%;
     max-width:420px;
+
     display:flex;
     gap:10px;
 }
 
+/* BOTÓN RONDA */
 #btnRonda{
     flex:1;
-    background:#4362ec;
+
+    background: linear-gradient(135deg, #4362ec, #5f7cff);
     color:white;
-    padding:14px;
-    border-radius:12px;
+
+    padding:16px;
+    border-radius:16px;
+
+    box-shadow: 0 6px 20px rgba(67,98,236,0.4);
 }
 
+/* FINALIZAR */
 #finalizarPartida{
     flex:1;
-    background:#e74c3c;
+
+    background: linear-gradient(135deg, #e74c3c, #ff5a4d);
     color:white;
-}
 
-/* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-}
-
-.modalContenido{
-    background:#2b2b2b;
-    padding:20px;
+    padding:16px;
     border-radius:16px;
-    width:90%;
-    max-width:320px;
+
+    box-shadow: 0 6px 20px rgba(231,76,60,0.4);
 }
 
-/* INPUTS */
-#inputsPuntajes{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:10px;
+/* HOVER GLOBAL */
+button{
+    transition: all 0.2s ease;
 }
 
-#inputsPuntajes input{
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #2a2a2a;
-    background:#121212;
-    color:white;
+button:hover{
+    transform: translateY(-3px);
+}
+
+button:active{
+    transform: scale(0.97);
 }
 
 /* TOAST */

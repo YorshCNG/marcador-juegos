@@ -106,7 +106,7 @@ btnGuardar.addEventListener("click", () => {
         const valor = parseInt(input.value);
 
         if(isNaN(valor)){
-            alert("Todos los jugadores deben tener puntaje");
+            mostrarToast("Todos los jugadores deben tener puntaje");
             return;
         }
 
@@ -165,7 +165,7 @@ function verificarGanador(){
 function finalizarJuego(){
 
     if(jugadores.length === 0){
-        alert("No hay jugadores");
+        mostrarToast("No hay jugadores");
         return;
     }
 
@@ -213,6 +213,18 @@ function mostrarResultado(titulo, texto){
 btnRonda.addEventListener("click", abrirModalPuntajes);
 
 botonFinalizar.addEventListener("click", finalizarJuego);
+
+function mostrarToast(mensaje){
+
+    const toast = document.getElementById("toast");
+
+    toast.innerText = mensaje;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
 
 // ============================
 // 💾 GUARDADO

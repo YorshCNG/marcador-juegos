@@ -1,8 +1,8 @@
 /* BASE */
 body{
     margin:0;
-    font-family: system-ui, -apple-system, Arial;
-    background:#121212;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #1e1e1e, #121212);
     color:white;
 
     display:flex;
@@ -13,19 +13,14 @@ body{
 .container{
     width:100%;
     max-width:420px;
-    min-height:100vh;
-
-    padding:20px 16px;
-
-    display:flex;
-    flex-direction:column;
+    padding:20px;
 }
 
 /* TITULO */
 h1{
-    font-size:20px;
+    font-size:22px;
+    margin-bottom:20px;
     text-align:center;
-    margin-bottom:16px;
 }
 
 /* PASOS */
@@ -33,21 +28,12 @@ h1{
     display:flex;
     flex-direction:column;
     gap:12px;
-}
 
-/* CARD (clave visual) */
-.paso{
-    background:#1a1a1a;
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
     padding:16px;
     border-radius:16px;
 
-    box-shadow:0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* LABEL */
-label{
-    font-size:13px;
-    color:#aaa;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 /* INPUT */
@@ -55,10 +41,8 @@ input{
     padding:14px;
     border-radius:12px;
     border:1px solid #2a2a2a;
-
     background:#121212;
     color:white;
-    font-size:15px;
 }
 
 /* BOTONES */
@@ -67,105 +51,72 @@ button{
     border-radius:14px;
     border:none;
     font-weight:bold;
-    font-size:15px;
     cursor:pointer;
-    transition:0.15s;
+    transition:0.2s;
 }
 
 button:active{
     transform:scale(0.96);
 }
 
-/* BOTÓN PRINCIPAL */
+/* BOTONES PRINCIPALES */
 #btnPaso1,
 #btnPaso2,
 #btnIniciar{
-    background:#3b82f6;
+    background:#4362ec;
     color:white;
 }
 
-/* BOTÓN AGREGAR */
+/* AGREGAR */
 #agregarJugador{
     background:#22c55e;
     color:white;
 }
 
-/* LISTA JUGADORES */
+/* LISTA */
 #listaJugadores{
     list-style:none;
     padding:0;
-    margin-top:8px;
 }
 
-/* ITEM JUGADOR */
 #listaJugadores li{
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:#181818;
+    background:#1e1e1e;
     padding:14px;
     border-radius:12px;
-
-    margin-bottom:8px;
-}
-
-/* NOMBRE */
-#listaJugadores span{
-    font-size:15px;
 }
 
 /* ELIMINAR */
 #listaJugadores button{
-    background:#ef4444;
-    padding:8px 10px;
-    border-radius:10px;
+    background:#e74c3c;
+    padding:6px 10px;
+    border-radius:8px;
 }
 
 /* RESUMEN */
 #resumen{
-    background:#181818;
+    background:#1e1e1e;
     padding:14px;
     border-radius:12px;
-
-    font-size:14px;
-    color:#ccc;
-    line-height:1.5;
 }
 
-/* ===================== */
-/* 🔥 TOAST */
-/* ===================== */
-
+/* TOAST */
 .toast{
     position:fixed;
     bottom:20px;
     left:50%;
     transform:translateX(-50%);
-
     background:#2a2a2a;
     color:white;
-
     padding:12px 16px;
     border-radius:10px;
-
-    font-size:14px;
-
     opacity:0;
-    pointer-events:none;
-
-    transition:all 0.3s ease;
-
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    transition:0.3s;
 }
 
 .toast.show{
     opacity:1;
-    transform:translateX(-50%) translateY(-10px);
-}
-
-h3{
-    margin:0;
-    font-size:14px;
-    color:#3b82f6;
 }

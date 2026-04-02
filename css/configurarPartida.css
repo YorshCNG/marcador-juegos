@@ -145,3 +145,9 @@ button:active{
 #tituloMensaje{
     color:rgb(228, 193, 39);
 }
+
+.paso{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}

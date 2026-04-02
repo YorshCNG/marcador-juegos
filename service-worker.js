@@ -1,4 +1,4 @@
-const CACHE_NAME = "marcador-juegos-v3";
+const CACHE_NAME = "marcador-juegos-v4";
 
 // 🔥 BASE PATH (CLAVE)
 const BASE = "/marcador-juegos/";

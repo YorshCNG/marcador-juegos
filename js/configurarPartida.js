@@ -43,7 +43,7 @@ btnPaso1.addEventListener("click", () => {
     if(juego === "careocas"){
         const rondas = document.getElementById("cantidadRondas").value;
         if(rondas === "" || rondas <= 0){
-            alert("Ingresa rondas válidas");
+            mostrarToast("Ingresa rondas válidas");
             return;
         }
         localStorage.setItem("cantidadRondas", rondas);
@@ -52,7 +52,7 @@ btnPaso1.addEventListener("click", () => {
     if(juego === "espanolas"){
         const puntos = document.getElementById("puntosObjetivo").value;
         if(puntos === "" || puntos <= 0){
-            alert("Ingresa puntaje válido");
+            mostrarToast("Ingresa puntaje válido");
             return;
         }
         localStorage.setItem("puntosObjetivo", puntos);
@@ -70,7 +70,7 @@ document.getElementById("agregarJugador").addEventListener("click", () => {
     const nombre = inputJugador.value.trim();
 
     if(nombre === ""){
-        alert("Escribe un nombre");
+        mostrarToast("Escribe un nombre");
         return;
     }
 
@@ -108,7 +108,7 @@ function eliminarJugador(index){
 btnPaso2.addEventListener("click", () => {
 
     if(jugadores.length === 0){
-        alert("Agrega al menos un jugador");
+        mostrarToast("Agrega al menos un jugador");
         return;
     }
 
@@ -142,6 +142,18 @@ function mostrarResumen(){
     });
 
     resumen.innerHTML = html;
+}
+
+function mostrarToast(mensaje){
+
+    const toast = document.getElementById("toast");
+
+    toast.innerText = mensaje;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
 
 //////////////////////////////

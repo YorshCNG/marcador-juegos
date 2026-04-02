@@ -1,29 +1,42 @@
+/* BASE GLOBAL */
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(180deg, #0f0f0f, #1a1a1a);
+    color:white;
+
+    display:flex;
+    justify-content:center;
+
+    min-height:100vh;
+}
+
 /* CONTENEDOR */
 .container{
     width:100%;
     max-width:420px;
     padding:20px;
-    padding-bottom:90px;
+    padding-bottom:100px;
 }
 
 /* TITULO */
 h1{
     text-align:center;
-    font-size:22px;
     margin-bottom:15px;
 }
 
-/* INFO (CARD PRO) */
+/* CARD INFO */
 .infoJuego{
     background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
     padding:16px;
     border-radius:16px;
-    margin-bottom:15px;
+    margin-bottom:20px;
 
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-/* JUGADORES */
+/* LISTA */
 #listaJugadores li{
     display:flex;
     justify-content:space-between;
@@ -36,21 +49,20 @@ h1{
 
     margin-bottom:10px;
 
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
-/* NOMBRE */
+/* TEXTO */
 .nombre{
     font-size:16px;
 }
 
-/* PUNTOS */
 .puntos{
-    font-weight:bold;
     color:#22c55e;
+    font-weight:bold;
 }
 
-/* BOTONES ABAJO */
+/* BOTONES INFERIORES */
 .acciones{
     position:fixed;
     bottom:10px;
@@ -64,43 +76,31 @@ h1{
     gap:10px;
 }
 
-/* BOTÓN RONDA */
-#btnRonda{
-    flex:1;
-
-    background: linear-gradient(135deg, #4362ec, #5f7cff);
-    color:white;
-
-    padding:16px;
-    border-radius:16px;
-
-    box-shadow: 0 6px 20px rgba(67,98,236,0.4);
-}
-
-/* FINALIZAR */
-#finalizarPartida{
-    flex:1;
-
-    background: linear-gradient(135deg, #e74c3c, #ff5a4d);
-    color:white;
-
-    padding:16px;
-    border-radius:16px;
-
-    box-shadow: 0 6px 20px rgba(231,76,60,0.4);
-}
-
-/* HOVER GLOBAL */
+/* BOTONES */
 button{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    font-weight:bold;
+
     transition: all 0.2s ease;
 }
 
 button:hover{
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
-button:active{
-    transform: scale(0.97);
+/* RONDA */
+#btnRonda{
+    background: linear-gradient(135deg, #4362ec, #5f7cff);
+    color:white;
+}
+
+/* FINALIZAR */
+#finalizarPartida{
+    background: linear-gradient(135deg, #ef4444, #ff5a4d);
+    color:white;
 }
 
 /* TOAST */

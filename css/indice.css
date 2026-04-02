@@ -1,51 +1,82 @@
+/* BASE */
 body{
     margin:0;
     font-family: Arial, Helvetica, sans-serif;
-    background:#1e1e1e;
+
+    background: linear-gradient(180deg, #1e1e1e, #121212);
     color:white;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     height:100vh;
 }
 
+/* CONTENEDOR */
 .container{
-    background:#2c2c2c;
-    padding:40px;
-    border-radius:15px;
+    width:100%;
+    max-width:400px;
+
+    padding:30px 20px;
+
     text-align:center;
-    width:350px;
-    box-shadow:0px 0px 15px rgba(0,0,0,0.5);
 }
 
+/* TITULO */
 h1{
     font-size:22px;
+    font-weight:bold;
     margin-bottom:30px;
+    line-height:1.4;
 }
 
+/* BOTONES */
 .buttons{
     display:flex;
-    justify-content:space-around;
+    flex-direction:column;
+    gap:15px;
 }
 
+/* BOTÓN GENERAL */
 button{
-    padding:12px 30px;
+    padding:16px;
     font-size:16px;
     border:none;
-    border-radius:8px;
+    border-radius:14px;
     cursor:pointer;
+
+    font-weight:bold;
+    letter-spacing:0.5px;
+
+    transition: all 0.2s ease;
 }
 
+/* BOTÓN SI */
 .yes{
-    background:#4CAF50;
+    background: linear-gradient(135deg, #4362ec, #5f7cff);
     color:white;
+
+    box-shadow: 0 6px 20px rgba(67,98,236,0.4);
 }
 
+/* BOTÓN NO */
 .no{
-    background:#f44336;
+    background: linear-gradient(135deg, #e74c3c, #ff5f4d);
     color:white;
+
+    box-shadow: 0 6px 20px rgba(231,76,60,0.4);
 }
 
+/* HOVER */
+button:hover{
+    transform: translateY(-2px);
+}
+
+/* CLICK */
+button:active{
+    transform: scale(0.96);
+}
 button:hover{
     opacity:0.8;
 }

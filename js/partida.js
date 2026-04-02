@@ -206,14 +206,6 @@ function mostrarResultado(titulo, texto){
     modal.style.display = "flex";
 }
 
-document.getElementById("btnNuevaPartida").addEventListener("click", () => {
-
-    // 🔥 LIMPIEZA TOTAL
-    localStorage.clear();
-
-    window.location.href = "/marcador-juegos/index.html";
-});
-
 // ============================
 // 🔘 BOTONES
 // ============================
@@ -230,6 +222,13 @@ function guardarPartida(){
     localStorage.setItem("jugadores", JSON.stringify(jugadores));
 }
 
+document.getElementById("btnNuevaPartida").addEventListener("click", () => {
+
+    // 🔥 LIMPIEZA TOTAL
+    localStorage.clear();
+
+    window.location.href = "/marcador-juegos/index.html";
+});
 // ============================
 // 🚀 INIT
 // ============================

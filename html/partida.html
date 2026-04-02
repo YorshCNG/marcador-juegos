@@ -16,66 +16,27 @@
 
 <div class="container">
 
-<h1>Nueva Partida</h1>
+    <h1 id="tituloJuego"></h1>
 
-<div id="infoJuego"></div>
+    <div id="infoJuego" class="infoJuego"></div>
 
-<input type="text" id="nombreJugador" placeholder="Nombre del jugador">
+    <h2>Jugadores</h2>
 
-<button class="add" id="agregarJugador">Agregar jugador</button>
-
-<h2>Jugadores</h2>
-
-<ul id="listaJugadores"></ul>
-
-<button id="finalizarPartida">Finalizar partida</button>
+    <ul id="listaJugadores"></ul>
 
 </div>
 
-<!-- ================= MODALES ================= -->
+<!-- BOTONES FIJOS -->
+<div class="acciones">
 
-<div id="modalResultado" class="modal">
-    <div class="modalContenido">
-        <h2 id="tituloResultado"></h2>
-        <p id="textoResultado"></p>
-        <button id="btnCerrarModal">Nueva partida</button>
-    </div>
+    <button id="btnRonda">Siguiente ronda</button>
+
+    <button id="finalizarPartida">Finalizar partida</button>
+
 </div>
 
-<div id="modalMensaje" class="modal">
-    <div class="modalContenido">
-        <h2 id="tituloMensaje"></h2>
-        <p id="textoMensaje"></p>
-        <button id="cerrarModal">Cerrar</button>
-    </div>
-</div>
-
-<div id="modalConfirmacion" class="modal">
-    <div class="modalContenido">
-        <h2>Eliminar jugador</h2>
-        <p>¿Eliminar este jugador?</p>
-        <div class="botonesModal">
-            <button id="cancelarEliminar">Cancelar</button>
-            <button id="confirmarEliminar" class="btnEliminarConfirmar">Eliminar</button>
-        </div>
-    </div>
-</div>
-
-<div id="modalFinalizar" class="modal">
-    <div class="modalContenido">
-        <h2>Finalizar partida</h2>
-        <p>¿Seguro que deseas terminar la partida?</p>
-        <div class="botonesModal">
-            <button id="cancelarFinalizar">Cancelar</button>
-            <button id="confirmarFinalizar" class="btnEliminarConfirmar">
-                Finalizar
-            </button>
-        </div>
-    </div>
-</div>
-
+<!-- MODAL PUNTAJES -->
 <div id="modalPuntajes" class="modal">
-
     <div class="modalContenido">
 
         <h2>Ingresar puntajes</h2>
@@ -85,7 +46,20 @@
         <button id="guardarPuntajes">Continuar</button>
 
     </div>
+</div>
 
+<!-- MODAL RESULTADO -->
+<div id="modalResultado" class="modal">
+    <div class="modalContenido">
+
+        <h2 id="tituloResultado"></h2>
+        <p id="textoResultado"></p>
+
+        <button onclick="location.href='index.html'">
+            Nueva partida
+        </button>
+
+    </div>
 </div>
 
 <!-- 🔥 SCRIPT SIEMPRE AL FINAL -->

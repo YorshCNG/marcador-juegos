@@ -141,25 +141,44 @@ function mostrarResumen(){
 
     const resumen = document.getElementById("resumen");
 
-    let html = "<h3>Resumen</h3>";
+    let html = `
+        <div class="resumenTitulo">Resumen</div>
+    `;
 
     if(juego === "careocas"){
-        html += `<p>Rondas: ${localStorage.getItem("cantidadRondas")}</p>`;
+        html += `
+            <div class="resumenItem">
+                <span>Rondas</span>
+                <strong>${localStorage.getItem("cantidadRondas")}</strong>
+            </div>
+        `;
     }
 
     if(juego === "espanolas"){
-        html += `<p>Objetivo: ${localStorage.getItem("puntosObjetivo")}</p>`;
+        html += `
+            <div class="resumenItem">
+                <span>Objetivo</span>
+                <strong>${localStorage.getItem("puntosObjetivo")}</strong>
+            </div>
+        `;
     }
 
-    html += "<p>Jugadores:</p>";
+    html += `<div class="resumenTitulo">Jugadores</div>`;
+    html += `<div class="resumenJugadores">`;
 
     jugadores.forEach(j => {
-        html += `<p>• ${j.nombre}</p>`;
+        html += `<div class="resumenJugador">${j.nombre}</div>`;
     });
+
+    html += `</div>`;
 
     resumen.innerHTML = html;
 }
 
+function volverPaso2(){
+    paso3.style.display = "none";
+    paso2.style.display = "flex";
+}
 //////////////////////////////
 // TOAST
 //////////////////////////////

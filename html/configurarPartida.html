@@ -8,7 +8,7 @@
 
 <title>Configurar partida</title>
 
-<link rel="stylesheet" href="/marcador-juegos/css/configurarPartida.css?v=12">
+<link rel="stylesheet" href="/marcador-juegos/css/configurarPartida.css?v=13">
 
 </head>
 
@@ -47,8 +47,18 @@
 <!-- PASO 3 -->
 <div id="paso3" class="paso" style="display:none;">
     <h2>Paso 3</h2>
-    <div id="resumen"></div>
-    <button id="btnIniciar">Iniciar partida</button>
+
+    <div id="resumen" class="resumenCard"></div>
+
+    <div class="botonesPaso">
+        <button class="btnVolver" onclick="volverPaso2()">
+            ← Volver
+        </button>
+
+        <button id="btnIniciar" class="btnSiguiente">
+            Iniciar →
+        </button>
+    </div>
 </div>
 </div>
 

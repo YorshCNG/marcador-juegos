@@ -11,69 +11,26 @@ body{
     max-width:420px;
     margin:auto;
     padding:16px;
+    padding-bottom:80px; /* espacio para botones */
 }
 
 /* TITULO */
 h1{
     text-align:center;
     font-size:22px;
-    margin-bottom:20px;
-}
-
-/* CARD GENERAL */
-.card{
-    background:#1e1e1e;
-    border-radius:14px;
-    padding:16px;
     margin-bottom:16px;
 }
 
-/* CONFIG */
+/* INFO JUEGO */
 .infoJuego{
-    background:#1e1e1e;
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:16px;
-}
+    background:#1a1a1a;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:14px;
 
-.infoJuego p{
-    margin:4px 0;
+    text-align:center;
     font-size:14px;
     color:#ccc;
-}
-
-/* BOTÓN RONDA */
-#siguienteRonda{
-    margin-top:10px;
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:none;
-    background:#2a2a2a;
-    color:white;
-}
-
-/* INPUT */
-input{
-    width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid #2a2a2a;
-    background:#1a1a1a;
-    color:white;
-    font-size:15px;
-    margin-bottom:10px;
-}
-
-/* BOTÓN AGREGAR */
-.add{
-    width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:none;
-    background:#3b82f6;
-    color:white;
-    font-weight:bold;
 }
 
 /* LISTA */
@@ -82,74 +39,29 @@ input{
     padding:0;
 }
 
-/* CARD JUGADOR */
+/* JUGADOR */
 #listaJugadores li{
-    background:#1e1e1e;
-    border-radius:14px;
-    padding:14px;
-    margin-bottom:12px;
-}
-
-/* HEADER */
-.jugadorHeader{
     display:flex;
     justify-content:space-between;
     align-items:center;
+
+    background:#1e1e1e;
+    border-radius:12px;
+    padding:14px;
     margin-bottom:10px;
 }
 
+/* NOMBRE */
 .nombre{
-    font-weight:600;
+    font-weight:500;
+    font-size:15px;
 }
 
+/* PUNTOS */
 .puntos{
-    color:#22c55e;
     font-weight:bold;
-}
-
-/* CONTROLES */
-.controles{
-    display:flex;
-    gap:8px;
-}
-
-/* INPUT PUNTOS */
-.controles input{
-    flex:1;
-    margin:0;
-}
-
-/* BOTONES + - */
-#sumar,
-#restar{
-    width:45px;
-    border:none;
-    border-radius:10px;
-    background:#2a2a2a;
-    color:white;
-    font-size:18px;
-}
-
-/* ELIMINAR */
-.btnEliminar{
-    background:#ef4444;
-    border:none;
-    border-radius:10px;
-    width:36px;
-    height:36px;
-    color:white;
-}
-
-/* BOTÓN FINAL */
-#finalizarPartida{
-    width:100%;
-    margin-top:20px;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#ef4444;
-    color:white;
-    font-weight:bold;
+    font-size:16px;
+    color:#4ade80;
 }
 
 /* MODAL */
@@ -165,24 +77,17 @@ input{
     align-items:center;
 }
 
+/* CONTENIDO MODAL */
 .modalContenido{
     background:#1e1e1e;
     padding:20px;
-    border-radius:12px;
-    width:260px;
+    border-radius:14px;
+    width:90%;
+    max-width:320px;
     text-align:center;
 }
 
-/* BOTONES */
-button{
-    cursor:pointer;
-    transition:0.15s;
-}
-
-button:active{
-    transform:scale(0.96);
-}
-
+/* INPUTS MODAL */
 #inputsPuntajes{
     display:flex;
     flex-direction:column;
@@ -192,8 +97,26 @@ button:active{
 
 #inputsPuntajes input{
     width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #2a2a2a;
+    background:#121212;
+    color:white;
 }
 
+/* BOTONES GENERALES */
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:12px;
+    transition:0.15s;
+}
+
+button:active{
+    transform:scale(0.96);
+}
+
+/* BOTONES INFERIORES */
 .acciones{
     position:fixed;
     bottom:10px;
@@ -201,7 +124,7 @@ button:active{
     transform:translateX(-50%);
 
     width:90%;
-    max-width:400px;
+    max-width:420px;
 
     display:flex;
     gap:10px;
@@ -212,9 +135,42 @@ button:active{
     background:#3b82f6;
     color:white;
     padding:14px;
-    border-radius:12px;
 }
 
 #finalizarPartida{
     flex:1;
+    background:#ef4444;
+    color:white;
+    padding:14px;
+}
+
+/* ===================== */
+/* 🔥 TOAST (NOTIFICACIONES) */
+/* ===================== */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    background:#2a2a2a;
+    color:white;
+
+    padding:12px 16px;
+    border-radius:10px;
+
+    font-size:14px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:all 0.3s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(-10px);
 }

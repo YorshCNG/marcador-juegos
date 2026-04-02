@@ -18,10 +18,27 @@
 
 <h1 id="tituloJuego"></h1>
 
-<div id="configuracionJuego" class="configuracionJuego"></div>
+<!-- PASO 1 -->
+<div id="paso1" class="paso">
+    <div id="configuracionJuego" class="configuracionJuego"></div>
+    <button id="btnPaso1">Siguiente</button>
+</div>
 
-<button id="btnComenzar">Comenzar partida</button>
+<!-- PASO 2 -->
+<div id="paso2" class="paso" style="display:none;">
+    <input type="text" id="nombreJugador" placeholder="Nombre del jugador">
+    <button id="agregarJugador">Agregar</button>
 
+    <ul id="listaJugadores"></ul>
+
+    <button id="btnPaso2">Siguiente</button>
+</div>
+
+<!-- PASO 3 -->
+<div id="paso3" class="paso" style="display:none;">
+    <div id="resumen"></div>
+    <button id="btnIniciar">Iniciar partida</button>
+</div>
 </div>
 
 <div id="modalMensaje" class="modal">

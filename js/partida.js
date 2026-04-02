@@ -3,7 +3,9 @@ const botonAgregar = document.getElementById("agregarJugador");
 const lista = document.getElementById("listaJugadores");
 const infoJuego = document.getElementById("infoJuego");
 const botonFinalizar = document.getElementById("finalizarPartida");
-
+const modalPuntajes = document.getElementById("modalPuntajes");
+const inputsContainer = document.getElementById("inputsPuntajes");
+const btnGuardar = document.getElementById("guardarPuntajes");
 const juego = localStorage.getItem("juegoSeleccionado");
 
 // 🔴 Validación importante
@@ -50,29 +52,7 @@ let rondaActual = 1;
 document.addEventListener("click", function(e){
 
     if(e.target && e.target.id === "siguienteRonda"){
-
-        const rondas = parseInt(localStorage.getItem("cantidadRondas"));
-
-        if(jugadores.length === 0){
-            mostrarMensaje("⚠ Error", "Debes agregar al menos un jugador.");
-            return;
-        }
-
-        // 🔴 Si ya está en la última → terminar
-        if(rondaActual >= rondas){
-            finalizarJuego();
-            return;
-        }
-
-        rondaActual++;
-
-        document.getElementById("rondaActual").innerText =
-        "Ronda actual: " + rondaActual;
-
-        // 🔥 Cambia texto en última ronda
-        if(rondaActual === rondas){
-            document.getElementById("siguienteRonda").innerText = "Terminar juego";
-        }
+        abrirModalPuntajes();
     }
 
 });
@@ -394,6 +374,65 @@ function actualizarBotonesJuego(){
         }
 
         botonFinalizar.disabled = false;
+    }
+}
+
+function abrirModalPuntajes(){
+
+    inputsContainer.innerHTML = "";
+
+    jugadores.forEach((jugador, index) => {
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <label>${jugador.nombre}</label>
+            <input type="number" id="puntaje-${index}" placeholder="0">
+        `;
+
+        inputsContainer.appendChild(div);
+    });
+
+    modalPuntajes.style.display = "flex";
+}
+
+btnGuardar.addEventListener("click", () => {
+
+    for(let i = 0; i < jugadores.length; i++){
+
+        const input = document.getElementById(`puntaje-${i}`);
+        const valor = parseInt(input.value);
+
+        if(isNaN(valor)){
+            alert("Todos los jugadores deben tener puntaje");
+            return;
+        }
+
+        jugadores[i].puntos += valor;
+    }
+
+    modalPuntajes.style.display = "none";
+
+    mostrarJugadores();
+    guardarPartida();
+
+    avanzarRonda();
+});
+
+function avanzarRonda(){
+
+    if(juego === "careocas"){
+
+        const rondas = parseInt(localStorage.getItem("cantidadRondas"));
+
+        rondaActual++;
+
+        document.getElementById("rondaActual").innerText =
+            "Ronda actual: " + rondaActual;
+
+        if(rondaActual > rondas){
+            finalizarJuego();
+        }
     }
 }
 

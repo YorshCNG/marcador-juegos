@@ -3,77 +3,92 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background:#1e1e1e;
     color:white;
+
     display:flex;
     justify-content:center;
-    align-items:center;
-    height:100vh;
 }
 
+/* 🔥 CONTENEDOR TIPO APP */
 .container{
-    background:#2c2c2c;
-    padding:40px;
-    border-radius:15px;
-    text-align:center;
-    width:350px;
-    box-shadow:0px 0px 15px rgba(0,0,0,0.5);
-}
+    width:100%;
+    max-width:420px;
+    height:100vh;
 
-h1{
-    font-size:22px;
-    margin-bottom:30px;
-}
-
-.buttons{
     display:flex;
-    justify-content:space-around;
+    flex-direction:column;
+
+    padding:16px;
+
+    background:#1e1e1e;
 }
 
-button{
-    padding:12px 30px;
-    font-size:16px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+/* HEADER */
+h1{
+    font-size:20px;
+    margin-bottom:10px;
+    text-align:center;
 }
 
-.add{
-    background:#4362ec;
-    color:white;
+/* INFO JUEGO */
+.infoJuego{
+    background:#2b2b2b;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+    text-align:center;
 }
 
-.Volver{
-    background:#4362ec;
-    color:white;
+.infoJuego h3{
+    margin-bottom:6px;
+    font-size:15px;
 }
 
-button:hover{
-    opacity:0.8;
+.infoJuego p{
+    margin:2px 0;
+    font-size:13px;
+    opacity:0.9;
 }
 
+/* BOTÓN RONDA */
+#siguienteRonda{
+    margin-top:8px;
+    padding:12px;
+    border-radius:10px;
+    width:100%;
+}
+
+/* INPUT + BOTÓN */
 input{
-    padding:10px;
-    border-radius:8px;
+    padding:12px;
+    border-radius:10px;
     border:none;
     outline:none;
     font-size:16px;
-    width: 140px;
-    margin-right:10px;
+    width:100%;
 }
 
-input::placeholder{
-    color:#888;
+.add{
+    margin-top:8px;
+    width:100%;
+    background:#4362ec;
+    color:white;
 }
 
+/* LISTA JUGADORES */
 #listaJugadores{
     list-style:none;
     padding:0;
     margin-top:10px;
+
+    flex:1;
+    overflow-y:auto;
 }
 
+/* CARD JUGADOR */
 #listaJugadores li{
-    background:#3a3a3a;
+    background:#2c2c2c;
     padding:12px;
-    border-radius:8px;
+    border-radius:12px;
     margin-bottom:10px;
 
     display:flex;
@@ -82,188 +97,123 @@ input::placeholder{
 }
 
 .nombre{
-    font-size:16px;
+    font-size:15px;
     text-align:left;
-}
-
-.controles{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:2px;
-}
-
-.controles input{
-    width:flex;
-    font-size:flex;
 }
 
 .puntos{
     font-weight:bold;
 }
 
+/* HEADER JUGADOR */
 .jugadorHeader{
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
 }
 
 .infoJugador{
-
     display:flex;
     gap:6px;
     align-items:center;
-
 }
 
-.btnEliminar{
+/* CONTROLES */
+.controles{
+    display:flex;
+    gap:6px;
+}
 
+.controles input{
+    flex:1;
+}
+
+#sumar,
+#restar{
+    background:#2a2a2a;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    min-width:45px;
+}
+
+/* BOTÓN ELIMINAR */
+.btnEliminar{
     width:36px;
     height:36px;
+    background:#e74c3c;
+    color:white;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
+    border-radius:10px;
 }
 
-#sumar{
-   background:#2a2a2a;
-   color:white;
-   padding:6px 10px;
-   border-radius:6px 0px 0px 6px;
-   font-size:flex;
-   justify-content:center;
-}
+/* 🔥 BOTÓN FINAL FIJO */
+#finalizarPartida{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
 
-#restar{
-    background:#2a2a2a;
-    color:white;
-    padding:6px 12px;
-    border-radius:0px 6px 6px 0px;
-    font-size:flex;
-    font-weight:bold;
-    justify-content:center;
-}
+    width:90%;
+    max-width:400px;
 
-.btnEliminar{
+    padding:14px;
+    border-radius:12px;
+
     background:#e74c3c;
     color:white;
+    border:none;
 }
 
-.infoJuego{
-
-background:#2b2b2b;
-padding:12px;
-border-radius:10px;
-margin-bottom:15px;
-text-align:center;
-
-}
-
-.infoJuego h3{
-
-margin-bottom:8px;
-font-size:16px;
-
-}
-
-.infoJuego p{
-
-margin:4px 0;
-font-size:14px;
-opacity:0.9;
-
-}
-
-#siguienteRonda{
-
-margin-top:10px;
-padding:8px 14px;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-#finalizarPartida{
-
-margin-top:15px;
-padding:10px 16px;
-border-radius:10px;
-background:#e74c3c;
-color:white;
-border:none;
-cursor:pointer;
-
-}
-
+/* MODAL */
 .modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
 
-display:none;
-position:fixed;
-top:0;
-left:0;
+    width:100%;
+    height:100%;
 
-width:100%;
-height:100%;
+    background:rgba(0,0,0,0.6);
 
-background:rgba(0,0,0,0.6);
-
-justify-content:center;
-align-items:center;
-
+    justify-content:center;
+    align-items:center;
 }
 
 .modalContenido{
-
-background:#2b2b2b;
-padding:25px;
-border-radius:12px;
-
-text-align:center;
-width:250px;
-
+    background:#2b2b2b;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    width:260px;
 }
 
 .modalContenido h2{
-
-margin-bottom:10px;
-
+    margin-bottom:10px;
 }
 
 .modalContenido button{
-
-margin-top:15px;
-padding:8px 16px;
-border-radius:8px;
-cursor:pointer;
-
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
 }
 
 .botonesModal{
-
-display:flex;
-justify-content:space-between;
-margin-top:15px;
-
-}
-
-.botonesModal button{
-
-padding:8px 16px;
-border-radius:8px;
-cursor:pointer;
-
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:15px;
 }
 
 .btnEliminarConfirmar{
-
-background:#e74c3c;
-color:white;
-border:none;
-
+    background:#e74c3c;
+    color:white;
+    border:none;
 }
 
 #cerrarModal{
@@ -272,12 +222,24 @@ border:none;
 }
 
 #tituloMensaje{
-        color:rgb(228, 193, 39);
+    color:rgb(228, 193, 39);
 }
 
+/* BOTONES */
+button{
+    font-size:15px;
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
+}
+
+/* EFECTO TOUCH */
+button:active{
+    transform:scale(0.97);
+}
+
+/* DESHABILITADO */
 button:disabled{
-
-opacity:0.5;
-cursor:not-allowed;
-
+    opacity:0.5;
+    cursor:not-allowed;
 }
